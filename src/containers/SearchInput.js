@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Search from '../components/Search/Search'
+
 class SearchInput extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +26,8 @@ class SearchInput extends Component {
       nowTime = new Date().getTime();
     })
     this.timer = setInterval(() => {
-      if(new Date().getTime() - nowTime > 1000 && !that.state.timeout){
+      const minTimes = new Date().getTime() - nowTime;
+      if(minTimes > 1000 && !that.state.timeout){
         that.setState({
           timeout:true
         })

@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import styles from './Search.css';
+import classNames from 'classnames';
+import './Search.scss';
 export default class Search extends Component {
   render() {
-    const underline = this.props.timeout?null:{textDecoration:'underline'}
+    const {timeout} = this.props;
     return (
-      <div className={styles.container} data-tid="container">
-        <div className={styles.mainbar}>
+      <div className='search-container'>
+        <div className='mainbar'>
         
         </div>
-        <div className={styles.keycontainer} style={underline}>
+        <div className={classNames('keycontainer',{'underline':!timeout})}>
           {this.props.keyword}
         </div>
       </div>
