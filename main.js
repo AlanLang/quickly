@@ -17,24 +17,26 @@ function createWindow () {
     x:(width-600)/2,
     frame: false, 
     resizable: false, 
-    skipTaskbar: true
+    skipTaskbar: true,
+    opacity:0.9,
+    backgroundColor:'#717274'
   })
 
   const trayMenuTemplate = [
     {
-        label: '设置',
-        click: function () {
-          mainWindow.webContents.send('main-process-href', 'config');
-          mainWindow.setSize(600,500);
-          mainWindow.center();
-        } //打开相应页面
+      label: '设置',
+      click: function () {
+        mainWindow.webContents.send('main-process-href', 'config');
+        mainWindow.setSize(600,500);
+        mainWindow.center();
+      }
     },
     {
-        label: '退出',
-        click: function () {
-          app.quit();
-            app.quit();//因为程序设定关闭为最小化，所以调用两次关闭，防止最大化时一次不能关闭的情况
-        }
+      label: '退出',
+      click: function () {
+        app.quit();
+          app.quit();//因为程序设定关闭为最小化，所以调用两次关闭，防止最大化时一次不能关闭的情况
+      }
     }
   ];
 
@@ -78,6 +80,11 @@ function createWindow () {
   mainWindow.on('closed', function () {
     mainWindow = null
   })
+
+  mainWindow.on('blur',()=>{
+    //mainWindow.hide()
+  })
+  
   ipcMain.on('asynchronous-message', (event, arg) => {
     if(arg === 'home'){
       mainWindow.setMinimumSize(600,55);

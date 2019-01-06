@@ -15,6 +15,16 @@ class SearchInput extends Component {
     const that = this;
     let nowTime = new Date().getTime();
     window.addEventListener('keypress',function(e){
+      if(e.key == 'Enter'){
+        if(that.props.onEnter){
+          that.props.onEnter(that.state.keyword);
+        }
+        that.setState({
+          keyword:'',
+          timeout:true
+        })
+        return;
+      }
       if(that.state.timeout){
         code = '';
       }
@@ -24,6 +34,9 @@ class SearchInput extends Component {
         timeout:false
       })
       nowTime = new Date().getTime();
+      if(that.props.onChange){
+        that.props.onChange(that.state.keyword);
+      }
     })
     this.timer = setInterval(() => {
       const minTimes = new Date().getTime() - nowTime;

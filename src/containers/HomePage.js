@@ -19,10 +19,16 @@ class HomePage extends Component {
     console.log(123)
     ipcRenderer.send('asynchronous-message', 'home')
   }
+  onEnter=(keyWord)=>{
+    console.log(keyWord)
+  }
+  onChange=(keyWord)=>{
+    //console.log(keyWord)
+  }
   render() {
     return (
-      <div style={{height:'100vh'}}>
-        <SearchInput></SearchInput>
+      <div style={{height:'100vh',overflow:'hidden'}}>
+        <SearchInput onEnter={this.onEnter} onChange={this.onChange}></SearchInput>
         <button onClick={this.onBack}>返回</button>
       </div>
     );
