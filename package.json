@@ -1,0 +1,41 @@
+{
+  "name": "quickly",
+  "version": "0.1.0",
+  "private": true,
+  "main": "main.js",
+  "homepage": ".",
+  "dependencies": {
+    "electron": "^4.0.1",
+    "fs": "^0.0.1-security",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-scripts": "2.1.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron": "electron .",
+    "package": "electron-packager ."
+  },
+  "build": {
+    "productName": "quickly",
+    "appId": "org.develar.quickly",
+    "mac": {
+      "category": "your.app.category.type"
+    }
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "electron-packager": "^13.0.1"
+  }
+}

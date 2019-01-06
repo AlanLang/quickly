@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  height: 55px;
+}
+.keycontainer{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-right: 12px;
+}
+.underline{
+  text-decoration:underline;
+}
+.mainbar{
+  height: 100vh;
+}
