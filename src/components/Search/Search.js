@@ -7,7 +7,7 @@ export default class Search extends Component {
     return (
       <div className='search-container'>
         <div className='mainbar'>
-        
+          微信(应用)
         </div>
         <div className={classNames('keycontainer',{'underline':!timeout})}>
           {this.props.keyword}

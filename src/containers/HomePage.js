@@ -15,11 +15,13 @@ class HomePage extends Component {
       console.log('%carg: ','color: MidnightBlue; background: Aquamarine;',arg);
     });
   }
-  onBack=()=>{
-    console.log(123)
-    ipcRenderer.send('asynchronous-message', 'home')
-  }
+  // onBack=()=>{
+  //   console.log(123)
+  //   ipcRenderer.send('asynchronous-message', 'home')
+  // }
   onEnter=(keyWord)=>{
+    const window = remote.getCurrentWindow();
+    window.hide();
     console.log(keyWord)
   }
   onChange=(keyWord)=>{
@@ -29,7 +31,6 @@ class HomePage extends Component {
     return (
       <div style={{height:'100vh',overflow:'hidden'}}>
         <SearchInput onEnter={this.onEnter} onChange={this.onChange}></SearchInput>
-        <button onClick={this.onBack}>返回</button>
       </div>
     );
   }
