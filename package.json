@@ -9,6 +9,7 @@
     "electron": "^4.0.1",
     "fs": "^0.0.1-security",
     "mousetrap": "^1.6.2",
+    "nedb": "^1.8.0",
     "node-sass": "^4.11.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",

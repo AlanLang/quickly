@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Mousetrap from 'mousetrap';
 import SearchInput from './SearchInput'
+import { paths } from '../modules'
 const electron = window.require("electron");
 const { ipcRenderer, remote } = electron;
 
@@ -11,6 +12,9 @@ Mousetrap.bind('esc', function() {
 
 class HomePage extends Component {
   componentDidMount(){
+    paths.find('谷歌').then(re=>{
+      console.log('%cre: ','color: MidnightBlue; background: Aquamarine;',re);
+    })
     ipcRenderer.on('main-process-href', (event, arg) => {
       console.log('%carg: ','color: MidnightBlue; background: Aquamarine;',arg);
     });
