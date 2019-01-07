@@ -1,6 +1,6 @@
 const Datastore = require('nedb');
 const db = new Datastore({ filename: 'quicklyPaths', autoload: true });
-const paths = {
+const pathService = {
   find(key){
     return new Promise((resolve, reject) => {
       db.find({ title: key }, function (err, docs) {
@@ -20,6 +20,16 @@ const paths = {
         resolve(newDoc);
       });
     });
+  },
+  findAll(){
+    return new Promise((resolve, reject) => {
+      db.find({ }, function (err, docs) {
+        if(err){
+          reject(err);
+        }
+        resolve(docs);
+      });
+    });
   }
 }
-export default paths
+export default pathService

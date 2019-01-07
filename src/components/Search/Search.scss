@@ -2,10 +2,8 @@
   display: flex;
   justify-content: space-between;
   height: 55px;
-  background: #717274;
   color: white;
   .keycontainer{
-    height: 100vh;
     display: flex;
     align-items: center;
     padding-right: 12px;
@@ -14,8 +12,6 @@
     text-decoration:underline;
   }
   .mainbar{
-    height: 100vh;
-    height: 100vh;
     display: flex;
     align-items: center;
     margin-left: 24px;
