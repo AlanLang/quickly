@@ -1,7 +1,7 @@
 ## quickly
 Launcher for Windows, like Launchber for mac.
 
-#### 演示
+### 演示
 待补充
 
 ### 功能
