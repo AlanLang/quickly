@@ -1,9 +1,13 @@
 const Datastore = require('nedb');
 const db = new Datastore({ filename: 'quicklyPaths', autoload: true });
+// type: 程序/网址/路径
 const pathService = {
   find(key){
+    var searcharr = key.split('');
+    var search = new RegExp(searcharr.join('*'));
+    console.log('%csearch: ','color: MidnightBlue; background: Aquamarine;',search);
     return new Promise((resolve, reject) => {
-      db.find({ title: key }, function (err, docs) {
+      db.find({ code: search }, function (err, docs) {
         if(err){
           reject(err);
         }

@@ -2,4 +2,33 @@
   border-top: 1px solid white;
   color: white;
   padding: 18px;
+  .buttons{
+    text-align: right;
+    Button{
+      margin-right: 12px;
+    }
+  }
+  .paths{
+    height: 380px;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px white;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color:  #d9d9d9;
+      outline: 1px solid #333;
+    }
+    .tr{
+      display: flex;
+      justify-content: space-around;
+      div{
+        flex: 0.2;
+        text-align:left;
+      }
+    }
+  }
 }

@@ -24,11 +24,12 @@ function createWindow () {
 
   const trayMenuTemplate = [
     {
-      label: '设置',
+      label: '配置',
       click: function () {
         mainWindow.webContents.send('main-process-href', 'config');
         mainWindow.setSize(600,500);
         mainWindow.center();
+        mainWindow.show();
       }
     },
     {
@@ -92,6 +93,7 @@ function createWindow () {
       mainWindow.setMinimumSize(600,55);
       mainWindow.setSize(600,55);
       mainWindow.setPosition((width-600)/2,250);
+      mainWindow.webContents.send('main-process-href', 'home');
     }
   })
   globalShortcut.register('CommandOrControl+T', () => {
@@ -99,6 +101,10 @@ function createWindow () {
   })
 
   globalShortcut.register('CommandOrControl+Space', () => {
+    mainWindow.setMinimumSize(600,55);
+    mainWindow.setSize(600,55);
+    mainWindow.setPosition((width-600)/2,250);
+    mainWindow.webContents.send('main-process-href', 'home');
     mainWindow.show();
     mainWindow.moveTop();
   })

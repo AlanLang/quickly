@@ -3,11 +3,15 @@ import classNames from 'classnames';
 import './Search.scss';
 export default class Search extends Component {
   render() {
-    const {timeout} = this.props;
+    const {timeout,data} = this.props;
+    let result = ''
+    if(data.length > 0){
+      result = data[0].title;
+    }
     return (
       <div className='search-container'>
         <div className='mainbar'>
-          微信(应用)
+          {result}
         </div>
         <div className={classNames('keycontainer',{'underline':!timeout})}>
           {this.props.keyword}

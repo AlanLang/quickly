@@ -1,2 +1,3 @@
 import pathService from './pathService'
-export {pathService}
+import openService from './openService'
+export {pathService, openService}

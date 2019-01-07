@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Search from '../components/Search/Search'
 
+
 class SearchInput extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +21,6 @@ class SearchInput extends Component {
           that.props.onEnter(that.state.keyword);
         }
         that.setState({
-          keyword:'',
           timeout:true
         })
         return;
@@ -56,7 +56,8 @@ class SearchInput extends Component {
 
   render() {
     const {keyword,timeout} = this.state;
-    return <Search keyword={keyword} timeout={timeout}></Search>;
+    const {data} = this.props;
+    return <Search data={data} keyword={keyword} timeout={timeout}></Search>;
   }
 }
 
