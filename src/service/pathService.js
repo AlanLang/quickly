@@ -4,8 +4,7 @@ const db = new Datastore({ filename: 'quicklyPaths', autoload: true });
 const pathService = {
   find(key){
     var searcharr = key.split('');
-    var search = new RegExp(searcharr.join('*'));
-    console.log('%csearch: ','color: MidnightBlue; background: Aquamarine;',search);
+    var search = new RegExp(searcharr.join('.*'));
     return new Promise((resolve, reject) => {
       db.find({ code: search }, function (err, docs) {
         if(err){
