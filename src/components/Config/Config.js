@@ -6,6 +6,11 @@ import './Config.scss';
 const electron = window.require("electron");
 const { ipcRenderer } = electron;
 export default class Config extends Component {
+  constructor(props) {
+    super(props);
+  }
+  componentWillMount(){
+  }
   onCancel= () => {
     ipcRenderer.send('asynchronous-message', 'home')
   }

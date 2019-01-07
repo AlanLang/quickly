@@ -1,6 +1,20 @@
 .gutter-row{
   text-align: center;
+  height: 30px;
+  line-height: 30px;
   Icon{
     cursor: pointer;
   }
+}
+.gutter-add{
+  color: #ababae;
+  text-align: center;
+  border: dashed 1px #ababae;
+  margin-top: 12px;
+  height: 30px;
+  line-height: 30px;
+  cursor: pointer;
+}
+.gutter-add:hover{
+  border: dashed 1px #d1d1d4;
 }
