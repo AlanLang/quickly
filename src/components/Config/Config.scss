@@ -4,13 +4,16 @@
   padding: 18px;
   .buttons{
     text-align: right;
-    Button{
-      margin-right: 12px;
+    .icon{
+      font-size: 20px;
+      margin-right: 10px;
+      cursor: pointer;
     }
   }
   .paths{
     height: 380px;
     overflow-y: auto;
+    overflow-x: hidden;
     &::-webkit-scrollbar {
       height: 6px;
       width: 6px;

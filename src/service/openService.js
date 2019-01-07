@@ -3,20 +3,11 @@ const { shell } = electron;
 
 const openService = {
   open(data){
-    switch(data.type){
-      case '网址':
-        shell.openExternal(data.value);
-        break;
-      case '程序':
-        shell.openItem(data.value);
-        break;
-      case '路径':
-        shell.openItem(data.value);
-        break;
-      default:
-        break;
+    if(data.value.startsWith('http://') || data.value.startsWith('https://')){
+      shell.openExternal(data.value);
+    }else{
+      shell.openItem(data.value);
     }
-    
   }
 }
 export default openService

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from 'antd';
+import { Icon } from 'antd';
 import Table from '../Table/Table'
 import classNames from 'classnames';
 import './Config.scss';
@@ -19,11 +19,10 @@ export default class Config extends Component {
     return (
       <div className='config-container'>
         <div className='paths'>
-          <Table data={data}></Table>
+          <Table onChange={this.props.onChange} data={data}></Table>
         </div>
         <div className='buttons'>
-          <Button onClick={this.onCancel}>取消</Button>
-          <Button type="primary">保存</Button>
+          <Icon className='icon' onClick={this.onCancel} type="close-circle" />
         </div>
       </div>
     );

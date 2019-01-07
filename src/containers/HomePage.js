@@ -17,6 +17,7 @@ class HomePage extends Component {
     super(props);
     this.state = {
       showConfig:false,
+      canInput:true,
       searchResult:[]
     };
   }
@@ -25,12 +26,14 @@ class HomePage extends Component {
     ipcRenderer.on('main-process-href', (event, arg) => {
       if(arg === 'config'){
         this.setState({
-          showConfig:true
+          showConfig:true,
+          canInput:false
         })
       }
       if(arg === 'home'){
         this.setState({
-          showConfig:false
+          showConfig:false,
+          canInput:true
         })
       }
     });
@@ -56,10 +59,10 @@ class HomePage extends Component {
     //console.log(keyWord)
   }
   render() {
-    const {showConfig, searchResult} = this.state;
+    const {showConfig, searchResult, canInput} = this.state;
     return (
       <div style={{height:'100vh',overflow:'hidden'}}>
-        <SearchInput data={searchResult} onEnter={this.onEnter} onChange={this.onChange} ></SearchInput>
+        <SearchInput enable={canInput} data={searchResult} onEnter={this.onEnter} onChange={this.onChange} ></SearchInput>
         {showConfig?<ConfigPage ></ConfigPage>:null}
       </div>
     );

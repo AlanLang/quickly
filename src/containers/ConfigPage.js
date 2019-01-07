@@ -9,14 +9,23 @@ export default class ConfigPage extends Component {
       dataSet:[]
     };
   }
-  componentWillMount(){
+
+  onChange = (data) => {
+    this.findAll();
+  }
+
+  findAll = () => {
     pathService.findAll().then(re=>{
       this.setState({
         dataSet:re
       })
     })
   }
+
+  componentWillMount(){
+    this.findAll();
+  }
   render() {
-    return <Config data={this.state.dataSet}></Config>
+    return <Config data={this.state.dataSet} onChange={this.onChange}></Config>
   }
 }

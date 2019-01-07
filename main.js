@@ -41,7 +41,7 @@ function createWindow () {
     }
   ];
 
-  appTray = new Tray(path.join(__dirname, 'public/favicon.ico'));//app.ico是app目录下的ico文件
+  appTray = new Tray(path.join(__dirname, 'public/favicon.png'));//app.ico是app目录下的ico文件
 
   //图标的上下文菜单
   const contextMenu = Menu.buildFromTemplate(trayMenuTemplate);

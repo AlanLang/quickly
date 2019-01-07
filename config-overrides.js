@@ -6,7 +6,7 @@ module.exports = function override(config, env) {
      config,
    );
    config = rewireLess.withLoaderOptions({
-    modifyVars: { "@input-bg": "#6b6b6f","@component-background": "#6b6b6f","@background-color-light":"#d1d1d4" },
+    modifyVars: { "@input-bg": "#6b6b6f","@input-color":"#fff" },
     javascriptEnabled: true,
    })(config, env);
   return config;

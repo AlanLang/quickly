@@ -9,3 +9,4 @@ Launcher for Windows, an alternative to Alfred and Launchy.
 - [ ] 自定义快捷键
 - [ ] 皮肤更换
 - [ ] 显示多条结果
+- [ ] 导入导出配置

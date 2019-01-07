@@ -15,9 +15,9 @@ const pathService = {
       });
     });
   },
-  insert({title,value,type,code}){
+  insert({title,value,code}){
     return new Promise((resolve, reject) => {
-      db.insert({title,value,type,code}, function (err, newDoc) {
+      db.insert({title,value,code}, function (err, newDoc) {
         if(err){
           reject(err);
         }
@@ -34,6 +34,26 @@ const pathService = {
         resolve(docs);
       });
     });
+  },
+  hasNoOne(key){
+    return new Promise((resolve, reject) => {
+      db.find({ code: key }, function (err, docs) {
+        if(err || docs.length > 0){
+          reject(err);
+        }
+        resolve(docs);
+      });
+    });
+  },
+  remove(id){
+    return new Promise((resolve,reject) => {
+      db.remove({ _id: id }, {}, function (err, numRemoved) {
+        if(err){
+          reject(err);
+        }
+        resolve(numRemoved);
+      });
+    })
   }
 }
 export default pathService

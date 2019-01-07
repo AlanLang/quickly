@@ -16,6 +16,9 @@ class SearchInput extends Component {
     const that = this;
     let nowTime = new Date().getTime();
     window.addEventListener('keypress',function(e){
+      if(!that.props.enable){
+        return;
+      }
       if(e.key == 'Enter'){
         if(that.props.onEnter){
           that.props.onEnter(that.state.keyword);
