@@ -1,7 +1,7 @@
 ## quickly
-Launcher for Windows, an alternative to Alfred and Launchy.
+Launcher for Windows, like Launchber for mac.
 
-#### demo
+#### 演示
 待补充
 
 ### 功能
