@@ -2,14 +2,15 @@
 Launcher for Windows, like Launchber for mac.
 
 ### 演示
-待补充
+![](images/show.gif)
 
 ### 功能
 - [x] 自定义配置
-- [ ] 自定义快捷键
+- [ ] 自定义快捷键及其他设置
 - [ ] 皮肤更换
 - [ ] 显示多条结果
 - [ ] 导入导出配置
+- [ ] 读取快捷方式列表(windows)
 
 ### 开发
 下载
