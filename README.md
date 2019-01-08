@@ -29,3 +29,4 @@ yarn dev
 ```
 yarn package
 ```
+唤醒快捷键: `Ctrl + space`

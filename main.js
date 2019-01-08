@@ -67,6 +67,8 @@ function createWindow () {
   // 加载应用----适用于 react 项目
   if(process.env.NODE_ENV === 'development'){
     mainWindow.loadURL('http://localhost:3000/');
+    // 打开开发者工具，默认不打开
+    mainWindow.webContents.openDevTools()
   }else{
   // 加载应用----react 打包
     mainWindow.loadURL(url.format({
@@ -75,9 +77,6 @@ function createWindow () {
       slashes: true
     }))
   }
-  
-  // 打开开发者工具，默认不打开
-  mainWindow.webContents.openDevTools()
 
   // 关闭window时触发下列事件.
   mainWindow.on('closed', function () {
@@ -95,9 +94,6 @@ function createWindow () {
       mainWindow.setPosition((width-600)/2,250);
       mainWindow.webContents.send('main-process-href', 'home');
     }
-  })
-  globalShortcut.register('CommandOrControl+T', () => {
-    mainWindow.openDevTools();
   })
 
   globalShortcut.register('CommandOrControl+Space', () => {
