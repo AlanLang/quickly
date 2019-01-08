@@ -26,10 +26,10 @@ function createWindow () {
     {
       label: '配置',
       click: function () {
-        mainWindow.webContents.send('main-process-href', 'config');
         mainWindow.setSize(600,500);
         mainWindow.center();
         mainWindow.show();
+        mainWindow.webContents.send('main-process-href', 'config');
       }
     },
     {

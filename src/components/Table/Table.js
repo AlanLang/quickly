@@ -73,9 +73,9 @@ export default class Table extends Component {
     const items = [];
     data.forEach(item => {
       items.push(<Row key={item._id} gutter={12}>
-        <Col className="gutter-row" span={6}>{item.code}</Col>
-        <Col className="gutter-row" span={6}>{item.title}</Col>
-        <Col className="gutter-row" span={9}>{item.value}</Col>
+        <Col className="gutter-row" span={4}>{item.code}</Col>
+        <Col className="gutter-row" span={4}>{item.title}</Col>
+        <Col className="gutter-row" span={13}>{item.value}</Col>
         <Col className="gutter-row" span={3}>
           <Icon style={iconStyle} onClick={this.onEdit} type="edit" />
           <Icon type="delete" onClick={this.onDelete.bind(this,item._id)} style={iconStyle} />
@@ -84,13 +84,13 @@ export default class Table extends Component {
     });
     if(isAdding){
       items.push(<Row key='adding' gutter={12}>
-        <Col className="gutter-row" span={6}>
+        <Col className="gutter-row" span={4}>
           <Input  placeholder="指令" value={this.state.code} onChange={e => this.setState({ code: e.target.value })}/>
         </Col>
-        <Col className="gutter-row" span={6}>
+        <Col className="gutter-row" span={4}>
           <Input placeholder="标题" value={this.state.title} onChange={e => this.setState({ title: e.target.value })}/>
         </Col>
-        <Col className="gutter-row" span={9}>
+        <Col className="gutter-row" span={13}>
           <Input placeholder="地址(网页以http或https开头)" 
           value={this.state.value} 
           onChange={e => this.setState({ value: e.target.value })}/>
