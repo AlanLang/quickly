@@ -1,5 +1,5 @@
 ## quickly
-Launcher for Windows, like Launchber for mac.
+一款跨平台的快速启动工具，类似于`mac`上的`LaunchBar`。
 
 ### 演示
 ![](images/show.gif)
