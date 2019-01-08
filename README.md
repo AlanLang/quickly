@@ -21,8 +21,6 @@ git clone https://github.com/AlanLang/quickly.git
 开发
 ```
 yarn start
-// 新建一个终端
-yarn dev
 ```
 
 打包
