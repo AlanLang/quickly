@@ -9,7 +9,7 @@ const { ipcRenderer, remote } = electron;
 
 Mousetrap.bind('esc', function() { 
   const window = remote.getCurrentWindow();
-  window.hide();
+  window.minimize();
 }, 'keyup');
 
 class HomePage extends Component {
