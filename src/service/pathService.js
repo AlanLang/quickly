@@ -53,6 +53,16 @@ const pathService = {
         resolve(numRemoved);
       });
     })
+  },
+  update({id,code, title, value }){
+    return new Promise((resolve,reject) => {
+      db.update({ _id: id }, { code,title,value}, {}, function (err, numRemoved) {
+        if(err){
+          reject(err);
+        }
+        resolve(numRemoved);
+      });
+    })
   }
 }
 export default pathService
