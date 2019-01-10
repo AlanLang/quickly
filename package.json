@@ -15,6 +15,9 @@
     ],
     "directories": {
       "buildResources": "assets"
+    },
+    "win":{
+      "icon": "public/favicon.ico"
     }
   },
   "dependencies": {
