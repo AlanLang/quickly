@@ -19,6 +19,7 @@ class HomePage extends Component {
     this.state = {
       showConfig:false,
       canInput:true,
+      selectIndex:0,
       searchResult:[]
     };
   }
@@ -42,12 +43,12 @@ class HomePage extends Component {
   }
   
   onEnter=(keyWord)=>{
-    const {searchResult} = this.state;
+    const {searchResult,selectIndex} = this.state;
     const nofind  = searchResult.length == 0;
     if(nofind){
 
     }else{
-      openService.open(searchResult[0]);
+      openService.open(searchResult[selectIndex]);
       const window = remote.getCurrentWindow();
       window.hide();
     }
@@ -61,6 +62,11 @@ class HomePage extends Component {
     })
     //console.log(keyWord)
   }
+  onListChange=(index) => {
+    this.setState({
+      selectIndex:index
+    })
+  }
   setWindowsHeight = (num) => {
     const window = remote.getCurrentWindow();
     const { width } = screen.getPrimaryDisplay().workAreaSize
@@ -71,12 +77,12 @@ class HomePage extends Component {
   }
 
   render() {
-    const {showConfig, searchResult, canInput} = this.state;
+    const {showConfig, searchResult, canInput, selectIndex} = this.state;
     return (
       <div style={{height:'100vh',overflow:'hidden'}}>
-        <SearchInput enable={canInput} data={searchResult} onEnter={this.onEnter} onChange={this.onChange} ></SearchInput>
+        <SearchInput select={selectIndex} enable={canInput} data={searchResult} onEnter={this.onEnter} onChange={this.onChange} ></SearchInput>
         {showConfig?<ConfigPage ></ConfigPage>:null}
-        {searchResult.length>1?<SearchList data={searchResult}></SearchList>:null}
+        {searchResult.length>1?<SearchList data={searchResult} onChange={this.onListChange}></SearchList>:null}
       </div>
     );
   }

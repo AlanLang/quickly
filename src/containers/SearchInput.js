@@ -59,8 +59,8 @@ class SearchInput extends Component {
 
   render() {
     const {keyword,timeout} = this.state;
-    const {data} = this.props;
-    return <Search data={data} keyword={keyword} timeout={timeout}></Search>;
+    const {data,select} = this.props;
+    return <Search select={select} data={data} keyword={keyword} timeout={timeout}></Search>;
   }
 }
 

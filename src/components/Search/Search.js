@@ -3,10 +3,10 @@ import classNames from 'classnames';
 import './Search.scss';
 export default class Search extends Component {
   render() {
-    const {timeout,data} = this.props;
+    const {timeout,data, select} = this.props;
     let result = ''
-    if(data.length > 0){
-      result = data[0].title;
+    if(data.length > select){
+      result = data[select].title;
     }
     return (
       <div className='search-container'>

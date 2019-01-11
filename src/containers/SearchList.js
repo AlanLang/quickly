@@ -11,18 +11,25 @@ export default class SearchList extends Component {
   }
 
   componentDidMount(){
+    const that = this;
     Mousetrap.bind('up', function() {
-      if(this.state.selectIndex > 0){
-        this.setState({
-          selectIndex:this.state.selectIndex - 1
+      if(that.state.selectIndex > 0){
+        const selectIndex = that.state.selectIndex - 1;
+        that.setState({
+          selectIndex:selectIndex
         })
+        if(that.props.onChange)
+        that.props.onChange(selectIndex)
       }
     });
     Mousetrap.bind('down', function() {
-      if(this.state.selectIndex < this.props.data.length - 1){
-        this.setState({
-          selectIndex:this.state.selectIndex + 1
+      if(that.state.selectIndex < that.props.data.length - 1){
+        const selectIndex = that.state.selectIndex + 1;
+        that.setState({
+          selectIndex:selectIndex
         })
+        if(that.props.onChange)
+        that.props.onChange(selectIndex)
       }
     });
   }
