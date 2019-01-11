@@ -70,7 +70,7 @@ class HomePage extends Component {
   setWindowsHeight = (num) => {
     const window = remote.getCurrentWindow();
     const { width } = screen.getPrimaryDisplay().workAreaSize
-    const height = num>1?(num+1)*55:55;
+    const height = num>1?(num+1)*50:55;
     window.setMinimumSize(600,height);
     window.setSize(600,height);
     window.setPosition((width-600)/2,250);

@@ -1,7 +1,12 @@
 .select-container{
   border-top: 1px solid white;
   color: white;
+  div{
+    height: 50px;
+    padding-top: 24px;
+    font-size: 24px;
+  }
   .is-selected{
-    color: red;
+    background-color: red;
   }
 }

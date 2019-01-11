@@ -8,7 +8,7 @@ class List extends Component {
     const items = [];
     data.forEach((item,index) => {
       const isSelect = classNames({"is-selected":index === selectIndex})
-      items.push(<div key={index} className={isSelect}>{item.code}{index}</div>)
+      items.push(<div key={index} className={isSelect}>{item.code}</div>)
     });
     return items;
   }
