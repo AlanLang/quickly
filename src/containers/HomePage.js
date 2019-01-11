@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import Mousetrap from 'mousetrap';
 import SearchInput from './SearchInput'
 import ConfigPage from './ConfigPage'
+import SearchList from './SearchList'
 import { pathService } from '../service'
 import { openService} from '../service'
 const electron = window.require("electron");
-const { ipcRenderer, remote } = electron;
+const { ipcRenderer, remote,screen } = electron;
 
 Mousetrap.bind('esc', function() { 
   const window = remote.getCurrentWindow();
@@ -33,8 +34,9 @@ class HomePage extends Component {
       if(arg === 'home'){
         this.setState({
           showConfig:false,
-          canInput:true
+          canInput:true,
         })
+        this.setWindowsHeight(this.state.searchResult.length);
       }
     });
   }
@@ -55,15 +57,26 @@ class HomePage extends Component {
       this.setState({
         searchResult:re
       })
+      this.setWindowsHeight(re.length);
     })
     //console.log(keyWord)
   }
+  setWindowsHeight = (num) => {
+    const window = remote.getCurrentWindow();
+    const { width } = screen.getPrimaryDisplay().workAreaSize
+    const height = num>1?(num+1)*55:55;
+    window.setMinimumSize(600,height);
+    window.setSize(600,height);
+    window.setPosition((width-600)/2,250);
+  }
+
   render() {
     const {showConfig, searchResult, canInput} = this.state;
     return (
       <div style={{height:'100vh',overflow:'hidden'}}>
         <SearchInput enable={canInput} data={searchResult} onEnter={this.onEnter} onChange={this.onChange} ></SearchInput>
         {showConfig?<ConfigPage ></ConfigPage>:null}
+        {searchResult.length>1?<SearchList data={searchResult}></SearchList>:null}
       </div>
     );
   }
