@@ -1,12 +1,30 @@
 .select-container{
   border-top: 1px solid white;
   color: white;
-  div{
-    height: 50px;
-    padding-top: 24px;
-    font-size: 24px;
+  padding-top: 5px;
+  .items{
+    padding-left: 25px;
+    height: 45px;
+    line-height: 45px;
+    font-size: 20px;
+    border-radius: 5px;
+    margin: 0 2px;
+    .icon{
+      margin-right: 8px;
+    }
+    .text{
+      display: inline-block;
+      font-size: 20px;
+    }
+    .code{
+      font-size: 14px;
+      float: right;
+      margin-right: 12px;
+      height: 45px;
+      line-height: 45px;
+    }
   }
   .is-selected{
-    background-color: red;
+    background-color:#ffa800;
   }
 }

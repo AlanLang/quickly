@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import { Icon } from 'antd';
 import './SelectResult.scss';
 
 class List extends Component {
@@ -7,8 +8,13 @@ class List extends Component {
     const {data,selectIndex} = this.props;
     const items = [];
     data.forEach((item,index) => {
-      const isSelect = classNames({"is-selected":index === selectIndex})
-      items.push(<div key={index} className={isSelect}>{item.code}</div>)
+      const type = item.value.startsWith('http://') || item.value.startsWith('https://')?'global':'desktop'
+      const isSelect = classNames({"is-selected":index === selectIndex,'items':true})
+      items.push(<div key={index} className={isSelect}>
+        <Icon type={type} className="icon" />
+        <div className="text">{item.title}</div>
+        <div className="code">{item.code}</div>
+      </div>)
     });
     return items;
   }

@@ -18,6 +18,7 @@ class HomePage extends Component {
     super(props);
     this.state = {
       showConfig:false,
+      showResule:false,
       canInput:true,
       selectIndex:0,
       searchResult:[]
@@ -29,15 +30,22 @@ class HomePage extends Component {
       if(arg === 'config'){
         this.setState({
           showConfig:true,
-          canInput:false
+          canInput:false,
+          showResule:true,
         })
+        const window = remote.getCurrentWindow();
+        window.setMinimumSize(600,500);
+        window.setSize(600,500);
+        window.center();
+        window.show();
       }
       if(arg === 'home'){
         this.setState({
           showConfig:false,
           canInput:true,
+          showResule:false
         })
-        this.setWindowsHeight(this.state.searchResult.length);
+        this.setWindowsHeight(1);
       }
     });
   }
@@ -56,11 +64,11 @@ class HomePage extends Component {
   onChange=(keyWord)=>{
     pathService.find(keyWord).then(re=>{
       this.setState({
-        searchResult:re
+        searchResult:re,
+        showResule:true
       })
       this.setWindowsHeight(re.length);
     })
-    //console.log(keyWord)
   }
   onListChange=(index) => {
     this.setState({
@@ -70,19 +78,19 @@ class HomePage extends Component {
   setWindowsHeight = (num) => {
     const window = remote.getCurrentWindow();
     const { width } = screen.getPrimaryDisplay().workAreaSize
-    const height = num>1?(num+1)*50:55;
+    const height = num>1?num*45+65:55;
     window.setMinimumSize(600,height);
     window.setSize(600,height);
     window.setPosition((width-600)/2,250);
   }
 
   render() {
-    const {showConfig, searchResult, canInput, selectIndex} = this.state;
+    const {showConfig, searchResult, canInput, selectIndex, showResule} = this.state;
     return (
       <div style={{height:'100vh',overflow:'hidden'}}>
         <SearchInput select={selectIndex} enable={canInput} data={searchResult} onEnter={this.onEnter} onChange={this.onChange} ></SearchInput>
         {showConfig?<ConfigPage ></ConfigPage>:null}
-        {searchResult.length>1?<SearchList data={searchResult} onChange={this.onListChange}></SearchList>:null}
+        {searchResult.length>1 && showResule?<SearchList data={searchResult} onChange={this.onListChange}></SearchList>:null}
       </div>
     );
   }
