@@ -26,6 +26,7 @@ function createWindow () {
     {
       label: '配置',
       click: function () {
+        mainWindow.setMinimumSize(600,500);
         mainWindow.setSize(600,500);
         mainWindow.center();
         mainWindow.show();

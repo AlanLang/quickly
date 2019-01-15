@@ -83,7 +83,6 @@ export default class Table extends Component {
   }
 
   onEdit = (item,event) => {
-    console.log('%citem: ','color: MidnightBlue; background: Aquamarine;',item);
     this.setState({
       isEditing:true,
       code:item.code,
