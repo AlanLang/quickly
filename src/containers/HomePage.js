@@ -65,7 +65,8 @@ class HomePage extends Component {
     pathService.find(keyWord).then(re=>{
       this.setState({
         searchResult:re,
-        showResule:true
+        showResule:true,
+        selectIndex:0
       })
       this.setWindowsHeight(re.length);
     })
@@ -78,7 +79,7 @@ class HomePage extends Component {
   setWindowsHeight = (num) => {
     const window = remote.getCurrentWindow();
     const { width } = screen.getPrimaryDisplay().workAreaSize
-    const height = num>1?num*45+65:55;
+    const height = num>0?num*45+65:55;
     window.setMinimumSize(600,height);
     window.setSize(600,height);
     window.setPosition((width-600)/2,250);
