@@ -29,11 +29,13 @@ class HomePage extends Component {
       if(re){
         if(re.value === '0'){
           ipcRenderer.send('asynchronous-config', 'hideList')
+          this.setWindowsHeight(0);
           this.setState({
             showResule:false
           })
         }else{
           ipcRenderer.send('asynchronous-config', 'showList')
+          this.setWindowsHeight(this.state.searchResult.length);
           this.setState({
             showResule:true
           })
