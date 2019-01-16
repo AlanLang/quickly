@@ -3,8 +3,7 @@ import Mousetrap from 'mousetrap';
 import SearchInput from './SearchInput'
 import ConfigPage from './ConfigPage'
 import SearchList from './SearchList'
-import { pathService } from '../service'
-import { openService} from '../service'
+import { pathService, openService, configService } from '../service'
 const electron = window.require("electron");
 const { ipcRenderer, remote,screen } = electron;
 
@@ -25,13 +24,31 @@ class HomePage extends Component {
     };
   }
 
+  componentWillMount(){
+    configService.get("showList").then(re=>{
+      if(re){
+        if(re.value === '0'){
+          ipcRenderer.send('asynchronous-config', 'hideList')
+          this.setState({
+            showResule:false
+          })
+        }else{
+          ipcRenderer.send('asynchronous-config', 'showList')
+          this.setState({
+            showResule:true
+          })
+        }
+      }
+      
+    })
+  }
+
   componentDidMount(){
     ipcRenderer.on('main-process-href', (event, arg) => {
       if(arg === 'config'){
         this.setState({
           showConfig:true,
-          canInput:false,
-          showResule:true,
+          canInput:false
         })
         const window = remote.getCurrentWindow();
         window.setMinimumSize(600,500);
@@ -42,12 +59,23 @@ class HomePage extends Component {
       if(arg === 'home'){
         this.setState({
           showConfig:false,
-          canInput:true,
-          showResule:false
+          canInput:true
         })
-        this.setWindowsHeight(1);
+        this.setWindowsHeight(0);
       }
     });
+
+    ipcRenderer.on('main-process-message', (event, arg) => {
+      if(arg === 'showOrHideList'){
+        const code = this.state.showResule?"1":"0";
+        configService.set("showList",code).then(re=>{
+          this.setState({
+            showResule:!this.state.showResule,
+            selectIndex:0
+          })
+        })
+      }
+    })
   }
   
   onEnter=(keyWord)=>{
@@ -65,9 +93,11 @@ class HomePage extends Component {
     pathService.find(keyWord).then(re=>{
       this.setState({
         searchResult:re,
-        showResule:true
+        selectIndex:0
       })
-      this.setWindowsHeight(re.length);
+      if(this.state.showResule){
+        this.setWindowsHeight(re.length);
+      }
     })
   }
   onListChange=(index) => {
@@ -78,7 +108,7 @@ class HomePage extends Component {
   setWindowsHeight = (num) => {
     const window = remote.getCurrentWindow();
     const { width } = screen.getPrimaryDisplay().workAreaSize
-    const height = num>1?num*45+65:55;
+    const height = num>0?num*45+65:55;
     window.setMinimumSize(600,height);
     window.setSize(600,height);
     window.setPosition((width-600)/2,250);
@@ -90,7 +120,7 @@ class HomePage extends Component {
       <div style={{height:'100vh',overflow:'hidden'}}>
         <SearchInput select={selectIndex} enable={canInput} data={searchResult} onEnter={this.onEnter} onChange={this.onChange} ></SearchInput>
         {showConfig?<ConfigPage ></ConfigPage>:null}
-        {searchResult.length>1 && showResule?<SearchList data={searchResult} onChange={this.onListChange}></SearchList>:null}
+        {searchResult.length>0 && showResule?<SearchList data={searchResult} onChange={this.onListChange} selectIndex={selectIndex}></SearchList>:null}
       </div>
     );
   }
