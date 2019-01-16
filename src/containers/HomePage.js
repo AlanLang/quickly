@@ -45,7 +45,7 @@ class HomePage extends Component {
           canInput:true,
           showResule:false
         })
-        this.setWindowsHeight(1);
+        this.setWindowsHeight(0);
       }
     });
   }
@@ -91,7 +91,7 @@ class HomePage extends Component {
       <div style={{height:'100vh',overflow:'hidden'}}>
         <SearchInput select={selectIndex} enable={canInput} data={searchResult} onEnter={this.onEnter} onChange={this.onChange} ></SearchInput>
         {showConfig?<ConfigPage ></ConfigPage>:null}
-        {searchResult.length>1 && showResule?<SearchList data={searchResult} onChange={this.onListChange}></SearchList>:null}
+        {searchResult.length>0 && showResule?<SearchList data={searchResult} onChange={this.onListChange} selectIndex={selectIndex}></SearchList>:null}
       </div>
     );
   }

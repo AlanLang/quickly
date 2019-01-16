@@ -34,6 +34,13 @@ function createWindow () {
       }
     },
     {
+      label: '显示结果列表',
+      type: 'checkbox',
+      checked: false,
+      click () {
+      }
+    },
+    {
       label: '退出',
       click: function () {
         app.quit();
