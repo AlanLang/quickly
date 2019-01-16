@@ -38,6 +38,7 @@ function createWindow () {
       type: 'checkbox',
       checked: false,
       click () {
+        mainWindow.webContents.send('main-process-message', 'showOrHideList');
       }
     },
     {
@@ -101,6 +102,15 @@ function createWindow () {
       mainWindow.setSize(600,55);
       mainWindow.setPosition((width-600)/2,250);
       mainWindow.webContents.send('main-process-href', 'home');
+    }
+  })
+
+  ipcMain.on('asynchronous-config', (ecent, ary) => {
+    if(ary === 'showList'){
+      contextMenu.items[1].checked = true;
+    }
+    if(ary === 'hideList'){
+      contextMenu.items[1].checked = false;
     }
   })
 
