@@ -27,7 +27,7 @@
     "fs": "^0.0.1-security",
     "mousetrap": "^1.6.2",
     "nedb": "^1.8.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "react": "^16.7.0",
     "react-app-rewire-less": "^2.1.3",
     "react-app-rewired": "2.0.2-next.0",
